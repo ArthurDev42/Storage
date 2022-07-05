@@ -1,0 +1,37 @@
+<div th:fragment="header">
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" fill="currentColor" class="bi bi-archive" viewBox="0 0 16 16">
+                <path d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1V2zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5H2zm13-3H1v2h14V2zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/" class="nav-link px-2 text-white">Storage</a></li>
+            <li><a href="/add" class="nav-link px-2 text-white">Add product </a></li>
+            <li><a href="#" class="nav-link px-2 text-white">Test</a></li>
+            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            </ul>
+        </div>
+        </div>
+    </header>
+</div>
+
+
+
+<div th:fragment="footer">
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+
+                <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Storage</a></li>
+                <li class="nav-item"><a href="/add" class="nav-link px-2 text-muted">Add product</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Test</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+            </ul>
+            <p class="text-center text-muted">© 2022 Company, Inc</p>
+        </footer>
+    </div>
+</div>
