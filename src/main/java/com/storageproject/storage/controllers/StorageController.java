@@ -1,46 +1,50 @@
 package com.storageproject.storage.controllers;
 
 import com.storageproject.storage.models.Product;
-import com.storageproject.storage.repository.ProductsRepository;
+import com.storageproject.storage.models.Provider;
+import com.storageproject.storage.repositories.ProductRepository;
+import com.storageproject.storage.repositories.ProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.Optional;
 
 @Controller
 public class StorageController {
     @Autowired
-    private final ProductsRepository productsRepository;
+    private final ProductRepository productsRepository;
+    private final ProviderRepository providerRepository;
 
-    public StorageController(ProductsRepository productsRepository) {
+    public StorageController(ProductRepository productsRepository, ProviderRepository providerRepository) {
         this.productsRepository = productsRepository;
+        this.providerRepository = providerRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping("/main")
     public String index(Model model) {
         Iterable<Product> products = productsRepository.findAll();
         model.addAttribute("allProducts", products);
-        return "index";
+        return "storage-main";
     }
 
     @GetMapping("/add")
     public String addProduct(Model model) {
-        return "addition";
+        Iterable<Provider> providers = providerRepository.findAll();
+        model.addAttribute("allProviders", providers);
+        return "product-addition";
     }
-
     @PostMapping("/add")
-    public String postProduct(@RequestParam String title,@RequestParam String manufacturer) {
-        Product product = new Product(title, manufacturer);
+    public String postProduct(@RequestParam String title, @RequestParam int quantity, @RequestParam Date releaseDate,
+                              @RequestParam long upc, @RequestParam String manufacturer, @RequestParam Provider provider) {
+        Product product = new Product(title, quantity, releaseDate, upc, manufacturer, provider);
         productsRepository.save(product);
-        return "redirect:/";
+        return "redirect:/main";
     }
-
-    @GetMapping("/info/{id}")
+        @GetMapping("/info/{id}")
     public String detailsInfo(@PathVariable(value = "id") long id, Model model) {
         if(!productsRepository.existsById(id)) {
             return "redirect:/errorpage";
@@ -48,7 +52,7 @@ public class StorageController {
         Optional<Product> optionalProducts = productsRepository.findById(id);
         Product product = optionalProducts.get();
         model.addAttribute("product", product);
-        return "info";
+        return "product-info";
     }
 
     @GetMapping("/info/{id}/edit")
@@ -59,7 +63,7 @@ public class StorageController {
         Optional<Product> optionalProducts = productsRepository.findById(id);
         Product product = optionalProducts.get();
         model.addAttribute("product", product);
-        return "edit";
+        return "product-edit";
     }
 
     @PostMapping("/info/{id}/edit")
@@ -72,7 +76,7 @@ public class StorageController {
         product.setTitle(title);
         product.setManufacturer(manufacturer);
         productsRepository.save(product);
-        return "redirect:/";
+        return "redirect:/info/{id}";
     }
 
     @PostMapping("/info/{id}/delete")
@@ -81,11 +85,11 @@ public class StorageController {
             return "redirect:/errorpage";
         }
         productsRepository.deleteById(id);
-        return "redirect:/";
+        return "redirect:/main";
     }
 
     @GetMapping("/errorpage")
-    public String viewErrorPage(Model model) {
+    public String viewErrorPage() {
         return "/errorpage";
     }
 }

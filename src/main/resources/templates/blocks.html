@@ -9,11 +9,19 @@
                 <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
             </a>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="/" class="nav-link px-2 text-white">Storage</a></li>
+            <li><a href="/main" class="nav-link px-2 text-white">Storage</a></li>
             <li><a href="/add" class="nav-link px-2 text-white">Add product </a></li>
-            <li><a href="#" class="nav-link px-2 text-white">Test</a></li>
-            <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+            <li><a href="/register" class="nav-link px-2 text-white">Register Employee</a></li>
+            <li><a href="/provider-addition" class="nav-link px-2 text-white">New provider</a></li>
             </ul>
+            <div class="text-end">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn btn-warning" value="Sign Out">
+                        Sign Out
+                    </button>
+                </form>
+
+            </div>
         </div>
         </div>
     </header>
@@ -25,11 +33,10 @@
     <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-
-                <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Storage</a></li>
+                <li class="nav-item"><a href="/main" class="nav-link px-2 text-muted">Storage</a></li>
                 <li class="nav-item"><a href="/add" class="nav-link px-2 text-muted">Add product</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Test</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+                <li class="nav-item"><a href="/register" class="nav-link px-2 text-muted">Test</a></li>
+                <li class="nav-item"><a href="/provider-addition" class="nav-link px-2 text-muted">About</a></li>
             </ul>
             <p class="text-center text-muted">© 2022 Company, Inc</p>
         </footer>

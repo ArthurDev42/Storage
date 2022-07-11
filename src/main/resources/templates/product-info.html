@@ -18,9 +18,12 @@
 <div class="container mt-5">
     <tbody  th:each="element:${product}">
     <tr>
-        <td th:text="${element.id}"/>
-        <td th:text="${element.title}"/>
-        <td th:text="${element.manufacturer}"/>
+        <td th:text="${element.id}"/><br>
+        <td th:text="${element.title}"/><br>
+        <td th:text="${element.quantity}"/><br>
+        <td th:text="${element.releaseDate}"/><br>
+        <td th:text="${element.upc}"/><br>
+        <td th:text="${element.manufacturer}"/><br>
     </tr>
 
     <p><a th:href="'/info/' + ${element.id} + '/edit'" class="btn btn-warning">
