@@ -5,5 +5,5 @@ import com.storageproject.storage.models.Employee;
 
 public interface EmployeeService {
 
-    public Employee registration(String login, String password) throws EmployeeIsAlreadyExist;
+    public Employee registration(String login, String password, String info) throws EmployeeIsAlreadyExist;
 }

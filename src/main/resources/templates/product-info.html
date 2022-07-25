@@ -24,6 +24,7 @@
         <td th:text="${element.releaseDate}"/><br>
         <td th:text="${element.upc}"/><br>
         <td th:text="${element.manufacturer}"/><br>
+        <td th:text="${element.provider.title}"/><br>
     </tr>
 
     <p><a th:href="'/info/' + ${element.id} + '/edit'" class="btn btn-warning">

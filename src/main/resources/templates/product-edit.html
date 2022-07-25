@@ -24,6 +24,12 @@
             <input type="date" name="releaseDate" th:value="${product.releaseDate}" placeholder="release date" class="form-control"><br>
             <input type="number" name="upc" th:value="${product.upc}" placeholder="upc code" class="form-control"><br>
             <input type="text" name="manufacturer" th:value="${product.manufacturer}" placeholder="manufacturer's title" class="form-control"><br>
+            <div class="col-md-5">
+                <label for="id_provider" class="form-label">Provider</label>
+                <select id="id_provider" name="provider" class="form-select">
+                    <option th:each="element:${allProviders}" th:text="${element.title}" th:value="${element.id}"/>
+                </select>
+            </div>
             <button type="submit" class="btn btn-success">apply</button>
         </form>
     </div>
