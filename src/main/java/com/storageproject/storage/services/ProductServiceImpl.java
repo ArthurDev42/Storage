@@ -46,11 +46,6 @@ public class ProductServiceImpl implements ProductService {
         Product product = optionalProducts.get();
         return product;
     }
-//
-//    @Override
-//    public Optional<Product> findById(Long id) {
-//        return Optional.empty();
-//    }
 
     @Override
     public void updateProduct(long id, String title, int quantity, Date releaseDate, long upc, String manufacturer, Provider provider) {

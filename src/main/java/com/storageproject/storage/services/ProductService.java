@@ -12,7 +12,6 @@ public interface ProductService {
     public void saveProduct(String title, int quantity, Date releaseDate, long upc, String manufacturer, Provider provider);
 
     public Product getProductByID(long id);
-//    public Optional<Product> findById(Long id);
 
     void updateProduct(long id, String title, int quantity, Date releaseDate, long upc, String manufacturer, Provider provider);
 
