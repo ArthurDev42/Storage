@@ -1,8 +1,9 @@
 package com.storageproject.storage.repositories;
 
 import com.storageproject.storage.models.Employee;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-public interface EmployeeRepository extends CrudRepository<Employee, Long> {
-
+public interface EmployeeRepository extends JpaRepository<Employee, Long> {
+    Optional<Employee> findByLogin(String login);
 }

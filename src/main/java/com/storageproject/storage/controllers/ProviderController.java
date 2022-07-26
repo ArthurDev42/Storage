@@ -27,7 +27,7 @@ public class ProviderController {
                                         @RequestParam String contacts,  @RequestParam String data) {
         try {
             providerServiceImpl.registrationNewProvider(title, contacts, data);
-            return "redirect:/main";
+            return "redirect:/";
         } catch (Exception e) {
             return "redirect:/errorpage";
         }

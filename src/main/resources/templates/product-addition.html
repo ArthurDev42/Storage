@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,6 +23,7 @@
             <input type="date" name="releaseDate" placeholder="input release date" class="form-control"><br>
             <input type="number" name="upc" placeholder="input upc code" class="form-control"><br>
             <input type="text" name="manufacturer" placeholder="input manufacturer title" class="form-control"><br>
+            <p>Employee : <input type="hidden" sec:authentication="name"></p><br>
             <div class="col-md-5">
                 <label for="id_provider" class="form-label">Provider</label>
                 <select id="id_provider" name="provider" class="form-select">

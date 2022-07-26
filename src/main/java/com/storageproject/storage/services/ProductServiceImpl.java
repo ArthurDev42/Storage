@@ -4,6 +4,7 @@ import com.storageproject.storage.models.Product;
 import com.storageproject.storage.models.Provider;
 import com.storageproject.storage.repositories.ProductRepository;
 import com.storageproject.storage.repositories.ProviderRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Date;
@@ -34,7 +35,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void saveProduct(String title, int quantity, Date releaseDate, long upc, String manufacturer, Provider provider) {
-            Product product = new Product(title, quantity, releaseDate, upc, manufacturer, provider);
+            String employee = SecurityContextHolder.getContext().getAuthentication().getName();
+            Product product = new Product(title, quantity, releaseDate, upc, manufacturer, provider, employee);
             productsRepository.save(product);
     }
 

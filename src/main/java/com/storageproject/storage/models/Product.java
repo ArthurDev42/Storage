@@ -19,17 +19,27 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "provider_id")
     private Provider provider;
-    @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
 
-    public Product(String title, int quantity, Date releaseDate, long upc, String manufacturer, Provider provider) {
+    private String employee;
+
+    public Product(String title, int quantity, Date releaseDate, long upc, String manufacturer, Provider provider, String employee) {
         this.title = title;
         this.quantity = quantity;
         this.releaseDate = releaseDate;
         this.upc = upc;
         this.manufacturer = manufacturer;
         this.provider = provider;
+        this.employee = employee;
+    }
+    public Product() {
+    }
+
+    public String getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(String employee) {
+        this.employee = employee;
     }
 
     public Provider getProvider() {
@@ -40,16 +50,6 @@ public class Product {
         this.provider = provider;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Product() {
-    }
 
     public void setId(Long id) {
         this.id = id;

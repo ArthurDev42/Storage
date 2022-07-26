@@ -12,9 +12,18 @@ public class Employee {
     private long id;
     private String login;
     private String password;
-    private String info;
     @OneToMany(mappedBy = "employee")
     private List<Product> products;
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public List<Product> getProducts() {
         return products;
@@ -27,18 +36,10 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String login, String password, String info) {
+    public Employee(String login, String password, Role role) {
         this.login = login;
         this.password = password;
-        this.info = info;
-    }
-
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
+        this.role = role;
     }
 
     public void setId(Long id) {

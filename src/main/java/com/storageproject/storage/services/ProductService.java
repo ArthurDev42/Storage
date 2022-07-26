@@ -2,10 +2,8 @@ package com.storageproject.storage.services;
 
 import com.storageproject.storage.models.Product;
 import com.storageproject.storage.models.Provider;
-import com.storageproject.storage.repositories.ProductRepository;
 
 import java.sql.Date;
-import java.util.Optional;
 
 public interface ProductService {
 

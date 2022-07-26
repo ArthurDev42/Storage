@@ -1,8 +1,8 @@
 package com.storageproject.storage.controllers;
 
-import com.storageproject.storage.services.EmployeeServiceImpl;
-import com.storageproject.storage.services.ProviderServiceImpl;
+import com.storageproject.storage.security.EmployeeServiceImpl;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,22 +16,22 @@ public class EmployeesController {
         this.employeeServiceImpl = employeeServiceImpl;
     }
 
-    @GetMapping("/")
-    public String index() {
-        return "index";
+    @GetMapping("/login")
+    public String getLogin() {
+        return "login";
     }
 
     @GetMapping("/register")
-    public String getRegister() {
+    public String getRegister(Model model) {
+        model.addAttribute("allRoles", employeeServiceImpl.getAllRoles());
         return "register-employee";
     }
 
     @PostMapping("/register")
-    public String postRegister(@RequestParam String login,
-                                               @RequestParam String password,  @RequestParam String info) {
+    public String postRegister(@RequestParam String login, @RequestParam String password, @RequestParam String role) {
         try {
-            employeeServiceImpl.registration(login, password, info);
-            return "redirect:/main";
+            employeeServiceImpl.registration(login, password, role);
+            return "redirect:/";
         } catch (Exception e) {
             return "redirect:/errorpage";
         }
